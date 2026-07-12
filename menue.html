@@ -14,43 +14,15 @@
     /* ===== Beispielmenü – Seiten-spezifisches Styling ===== */
     .menu-page { background: var(--bg); }
 
-    /* --- Hero der Menüseite --- */
-    .menu-hero {
-      position: relative;
-      padding: clamp(6rem, 12vw, 9rem) 1.5rem clamp(3.5rem, 6vw, 5rem);
-      text-align: center;
-      overflow: hidden;
+    /* --- Topbar mit Rücklink (ersetzt die frühere Hero-Sektion) --- */
+    .menu-topbar {
+      padding: clamp(1.6rem, 4vw, 2.4rem) clamp(1.5rem, 5vw, 3rem);
       background: var(--bg-deep);
-    }
-    .menu-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(27,17,10,0.72) 0%, rgba(27,17,10,0.55) 45%, rgba(27,17,10,0.94) 100%),
-        url("images/food-slider/cropped/food-slide-01.jpg") center/cover no-repeat;
-      opacity: 0.9;
-    }
-    .menu-hero > * { position: relative; z-index: 1; }
-    .menu-hero .script-accent { margin-bottom: 1.1rem; }
-    .menu-hero h1 {
-      font-family: var(--font-display);
-      text-transform: uppercase;
-      font-size: clamp(2.6rem, 7vw, 5rem);
-      line-height: 1.02;
-      color: var(--text);
-    }
-    .menu-hero p {
-      max-width: 44ch;
-      margin: 1.4rem auto 0;
-      color: var(--text-soft);
-      font-size: clamp(1rem, 1.6vw, 1.15rem);
     }
     .menu-back {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      margin-top: 2rem;
       font-family: "Fugaz One", sans-serif;
       font-style: italic;
       letter-spacing: 0.04em;
@@ -247,9 +219,9 @@
 
     /* --- Print --- */
     @media print {
-      .header-tools, .main-nav, .menu-back, .menu-cta-actions { display: none !important; }
+      .header-tools, .main-nav, .menu-back, .menu-cta-actions, .menu-topbar { display: none !important; }
       body, .menu-page { background: #fff !important; }
-      .menu-hero, .menu-cta { background: #1b110a !important; }
+      .menu-cta { background: #1b110a !important; }
       .menu-section { page-break-inside: avoid; }
       * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
@@ -257,13 +229,9 @@
 </head>
 <body class="menu-page">
 
-  <!-- ===== Hero ===== -->
-  <section class="menu-hero">
-    <p class="script-accent">Unser Beispielmenü</p>
-    <h1>Euer Event.<br>Unsere Leidenschaft.</h1>
-    <p>Ein Auszug aus unserem Repertoire – von Flying Fingerfood über herzhafte Buffets bis zum Live Cooking direkt vor euren Gästen. Alle Gerichte sind saisonal und nach euren Wünschen anpassbar.</p>
+  <div class="menu-topbar">
     <a class="menu-back" href="index.html">&#8592; Zurück zur Startseite</a>
-  </section>
+  </div>
 
   <!-- ===== 01 Fingerfood ===== -->
   <section class="menu-section menu-section--right">
