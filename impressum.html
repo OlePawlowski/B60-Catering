@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum | B60 Catering</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal-page { background: var(--bg); }
+
+    .legal-hero {
+      padding: clamp(6rem, 12vw, 8rem) 1.5rem clamp(2.5rem, 5vw, 3.5rem);
+      text-align: center;
+      background: var(--bg-deep);
+    }
+    .legal-hero .script-accent { margin-bottom: 0.7rem; }
+    .legal-hero h1 {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--text);
+    }
+    .legal-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.6rem;
+      font-family: "Fugaz One", sans-serif;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
+    }
+    .legal-back:hover { color: var(--gold-bright); }
+
+    .legal-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(3rem, 6vw, 4.5rem) 1.5rem clamp(4rem, 8vw, 6rem);
+    }
+    .legal-block { margin-bottom: 2.6rem; }
+    .legal-block h2 {
+      font-family: "Fugaz One", sans-serif;
+      font-style: italic;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-size: 1rem;
+      padding-bottom: 0.7rem;
+      margin-bottom: 1.1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .legal-block p {
+      color: var(--text-soft);
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+    .legal-block p + p { margin-top: 0.4rem; }
+    .legal-block strong { color: var(--text); font-weight: 600; }
+  </style>
+</head>
+<body class="legal-page">
+
+  <section class="legal-hero">
+    <p class="script-accent">Rechtliches</p>
+    <h1>Impressum</h1>
+    <a class="legal-back" href="index.html">&#8592; Zurück zur Startseite</a>
+  </section>
+
+  <div class="legal-body">
+    <div class="legal-block">
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p><strong>B60 Gebäudeservice UG</strong></p>
+      <p>Abt. Catering &amp; Eventservice</p>
+      <p>Bellevuestraße 1<br>10785 Berlin</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>Registereintrag</h2>
+      <p>Handelsregister: Amtsgericht Berlin Charlottenburg</p>
+      <p>Registernummer: HRB 280307 B</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>Kontakt</h2>
+      <p><a class="text-link" href="index.html#kontakt" style="border-bottom:none;">Kontaktformular auf b60-catering.de</a></p>
+      <p><a class="text-link" href="https://instagram.com/b60_catering" target="_blank" rel="noopener" style="border-bottom:none;">@b60_catering auf Instagram</a></p>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B60 Catering | Beispielmenü – Fingerfood, Buffet, Live Cooking & Desserts</title>
+  <meta name="description" content="Das Beispielmenü von B60 Catering: Flying Fingerfood, herzhaftes Buffet, Live Cooking vom Foodtruck und süße Desserts. Alle Gerichte saisonal anpassbar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===== Beispielmenü – Seiten-spezifisches Styling ===== */
+    .menu-page { background: var(--bg); }
+
+    /* --- Hero der Menüseite --- */
+    .menu-hero {
+      position: relative;
+      padding: clamp(6rem, 12vw, 9rem) 1.5rem clamp(3.5rem, 6vw, 5rem);
+      text-align: center;
+      overflow: hidden;
+      background: var(--bg-deep);
+    }
+    .menu-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(27,17,10,0.72) 0%, rgba(27,17,10,0.55) 45%, rgba(27,17,10,0.94) 100%),
+        url("images/food-slider/cropped/food-slide-01.jpg") center/cover no-repeat;
+      opacity: 0.9;
+    }
+    .menu-hero > * { position: relative; z-index: 1; }
+    .menu-hero .script-accent { margin-bottom: 1.1rem; }
+    .menu-hero h1 {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.02;
+      color: var(--text);
+    }
+    .menu-hero p {
+      max-width: 44ch;
+      margin: 1.4rem auto 0;
+      color: var(--text-soft);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+    }
+    .menu-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      font-family: "Fugaz One", sans-serif;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
+    }
+    .menu-back:hover { color: var(--gold-bright); }
+
+    /* --- Menü-Sektionen als Spreads mit angeschnittenem Foto --- */
+    .menu-section {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .menu-section:last-of-type { border-bottom: none; }
+
+    .menu-section-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+      position: relative;
+      z-index: 2;
+    }
+    .menu-section--right .menu-section-inner { padding-right: max(3rem, 44%); }
+    .menu-section--left  .menu-section-inner { padding-left: max(3rem, 44%); }
+
+    /* Angeschnittenes Foto, blutet zum Bildschirmrand */
+    .menu-photo {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: min(42vw, 680px);
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+    .menu-section--right .menu-photo { right: 0; }
+    .menu-section--left  .menu-photo { left: 0; }
+    .menu-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+    .menu-section--right .menu-photo::before {
+      background: linear-gradient(90deg, var(--bg) 0%, rgba(37,24,16,0) 26%, rgba(37,24,16,0) 100%);
+    }
+    .menu-section--left .menu-photo::before {
+      background: linear-gradient(270deg, var(--bg) 0%, rgba(37,24,16,0) 26%, rgba(37,24,16,0) 100%);
+    }
+
+    /* Dezentes Logo-Wasserzeichen hinter dem Text */
+    .menu-section-inner::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: clamp(280px, 34vw, 460px);
+      aspect-ratio: 1 / 1;
+      transform: translateY(-50%);
+      background: url("logo-b60-catering.png") center/contain no-repeat;
+      opacity: 0.05;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .menu-section--right .menu-section-inner::before { left: clamp(1rem, 6vw, 5rem); }
+    .menu-section--left  .menu-section-inner::before { right: clamp(1rem, 6vw, 5rem); }
+
+    .menu-section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 2.6rem;
+    }
+    .menu-section-num {
+      font-family: "Fugaz One", sans-serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      flex: none;
+    }
+    .menu-section-title {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      color: var(--text);
+      font-size: clamp(1.8rem, 4.4vw, 3rem);
+      line-height: 1.05;
+    }
+    .menu-section-title small {
+      display: block;
+      font-family: "Fugaz One", sans-serif;
+      font-style: italic;
+      text-transform: none;
+      color: var(--text-faint);
+      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.5rem;
+    }
+
+    /* --- Kategorien-Grid --- */
+    .menu-cats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: clamp(2rem, 4vw, 3.2rem);
+    }
+    .menu-cat h4 {
+      font-family: "Fugaz One", sans-serif;
+      font-style: italic;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-size: 0.9rem;
+      padding-bottom: 0.7rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .menu-dish { margin-bottom: 1.15rem; }
+    .menu-dish-name {
+      font-family: var(--font-body);
+      font-weight: 600;
+      color: var(--text);
+      font-size: 1.05rem;
+      letter-spacing: 0.005em;
+    }
+    .menu-dish-desc {
+      color: var(--text-faint);
+      font-size: 0.92rem;
+      margin-top: 0.15rem;
+    }
+
+    .menu-foot {
+      margin-top: 2.4rem;
+      color: var(--text-faint);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* --- Abschluss / CTA --- */
+    .menu-cta {
+      background: var(--bg-deep);
+      text-align: center;
+      padding: clamp(4rem, 8vw, 6rem) 1.5rem;
+    }
+    .menu-cta img { width: clamp(150px, 20vw, 220px); margin: 0 auto 2rem; }
+    .menu-cta h2 { color: var(--text); margin-bottom: 1rem; }
+    .menu-cta p { color: var(--text-soft); max-width: 46ch; margin: 0 auto 2rem; }
+    .menu-cta-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* --- Mobil: Foto als Band über dem Text --- */
+    @media (max-width: 900px) {
+      .menu-section--right .menu-section-inner,
+      .menu-section--left  .menu-section-inner {
+        padding-left: clamp(1.5rem, 5vw, 3rem);
+        padding-right: clamp(1.5rem, 5vw, 3rem);
+        padding-top: 280px;
+      }
+      .menu-photo,
+      .menu-section--right .menu-photo,
+      .menu-section--left  .menu-photo {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        height: 240px;
+      }
+      .menu-section--right .menu-photo::before,
+      .menu-section--left  .menu-photo::before {
+        background: linear-gradient(180deg, rgba(37,24,16,0) 55%, var(--bg) 100%);
+      }
+    }
+
+    /* --- Foto-Reihe im Abschluss --- */
+    .menu-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 720px;
+      margin: 2.6rem auto 0;
+    }
+    .menu-photos img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    @media (max-width: 560px) {
+      .menu-photos { grid-template-columns: 1fr; max-width: 340px; }
+    }
+
+    /* --- Print --- */
+    @media print {
+      .header-tools, .main-nav, .menu-back, .menu-cta-actions { display: none !important; }
+      body, .menu-page { background: #fff !important; }
+      .menu-hero, .menu-cta { background: #1b110a !important; }
+      .menu-section { page-break-inside: avoid; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body class="menu-page">
+
+  <!-- ===== Hero ===== -->
+  <section class="menu-hero">
+    <p class="script-accent">Unser Beispielmenü</p>
+    <h1>Euer Event.<br>Unsere Leidenschaft.</h1>
+    <p>Ein Auszug aus unserem Repertoire – von Flying Fingerfood über herzhafte Buffets bis zum Live Cooking direkt vor euren Gästen. Alle Gerichte sind saisonal und nach euren Wünschen anpassbar.</p>
+    <a class="menu-back" href="index.html">&#8592; Zurück zur Startseite</a>
+  </section>
+
+  <!-- ===== 01 Fingerfood ===== -->
+  <section class="menu-section menu-section--right">
+    <div class="menu-photo" style="background-image:url('images/food-slider/cropped/food-slide-02.jpg')" role="img" aria-label="Flying Fingerfood von B60 Catering"></div>
+    <div class="menu-section-inner">
+    <div class="menu-section-head">
+      <span class="menu-section-num">01</span>
+      <h2 class="menu-section-title"><small>Unsere Spezialität</small>Fingerfood &amp; Häppchen</h2>
+    </div>
+    <div class="menu-cats">
+      <div class="menu-cat">
+        <h4>Flying Fingerfood</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Caprese-Spieße</div><div class="menu-dish-desc">Mozzarella · Kirschtomaten · Basilikum-Öl</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Lachs-Blinis</div><div class="menu-dish-desc">Räucherlachs · Crème fraîche · Dill</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Mini Beef-Slider</div><div class="menu-dish-desc">Hausgemachtes Patty · Cheddar · Jalapeño-Aioli</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Gyoza <span style="font-weight:400;color:var(--text-faint)">(vegan möglich)</span></div><div class="menu-dish-desc">Gemüse- oder Schweinefüllung · Miso-Dip</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Bruschetta-Variation</div><div class="menu-dish-desc">Tomate-Basilikum · Ricotta-Feige · Pesto-Mozzarella</div></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Häppchen &amp; Canapés</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Lachs-Tartar auf Pumpernickel</div><div class="menu-dish-desc">Dill · Limette · Wasabi-Creme</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Rindercarpaccio</div><div class="menu-dish-desc">Rucola · Parmesan · Trüffelöl</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Vegane Wraps</div><div class="menu-dish-desc">Hummus · Avocado · Roasted Peppers</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Chicken Wings</div><div class="menu-dish-desc">Buffalo Style oder Szechuanpfeffer · Dip-Auswahl</div></div>
+      </div>
+    </div>
+      <p class="menu-foot">Alle Fingerfood-Variationen auch als vegetarische / vegane Version erhältlich.</p>
+    </div>
+  </section>
+
+  <!-- ===== 02 Buffet ===== -->
+  <section class="menu-section menu-section--left">
+    <div class="menu-photo" style="background-image:url('images/food-slider/cropped/food-slide-04.jpg')" role="img" aria-label="Buffet von B60 Catering"></div>
+    <div class="menu-section-inner">
+    <div class="menu-section-head">
+      <span class="menu-section-num">02</span>
+      <h2 class="menu-section-title"><small>Klassiker &amp; Favoriten</small>Buffet</h2>
+    </div>
+    <div class="menu-cats">
+      <div class="menu-cat">
+        <h4>Herzhafte Highlights</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Roastbeef vom Stück</div><div class="menu-dish-desc">Meerrettich-Creme · Baguette</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Pulled Chicken</div><div class="menu-dish-desc">BBQ-Sauce · Cole Slaw · Brioche-Buns</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Lachs en Croûte</div><div class="menu-dish-desc">Spinat-Rahm · Zitronenbutter</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Gemüse-Curry <span style="font-weight:400;color:var(--text-faint)">(vegan)</span></div><div class="menu-dish-desc">Jasminreis · Mango-Chutney</div></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Salate &amp; Beilagen</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Wildkräutersalat</div><div class="menu-dish-desc">Himbeer-Balsamico · Walnüsse · Ziegenkäse</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Couscous-Salat</div><div class="menu-dish-desc">Tomate · Gurke · Feta · Minze</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Kartoffelsalat Berliner Art</div><div class="menu-dish-desc">Gurke · Senf-Dressing · Schnittlauch</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Gratiniertes Ofengemüse</div><div class="menu-dish-desc">Zucchini · Paprika · Aubergine · Thymian</div></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Saucen &amp; Dips</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Aioli · Tzatziki · Chimichurri · Sriracha-Mayo</div><div class="menu-dish-desc">Hausgemacht, täglich frisch</div></div>
+      </div>
+    </div>
+      <p class="menu-foot">Buffet ab 20 Personen · Aufbau, Service &amp; Abbau inklusive.</p>
+    </div>
+  </section>
+
+  <!-- ===== 03 Live Cooking ===== -->
+  <section class="menu-section menu-section--right">
+    <div class="menu-photo" style="background-image:url('images/food-slider/cropped/food-slide-06.jpg')" role="img" aria-label="Live Cooking von B60 Catering"></div>
+    <div class="menu-section-inner">
+    <div class="menu-section-head">
+      <span class="menu-section-num">03</span>
+      <h2 class="menu-section-title"><small>Erlebnis pur</small>Live Cooking</h2>
+    </div>
+    <div class="menu-cats">
+      <div class="menu-cat">
+        <h4>Unsere Foodtruck-Station</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Gegrillte Fleischspieße</div><div class="menu-dish-desc">Hühnchen · Rind · Lamm · Kräuter-Marinade</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Pasta-Station</div><div class="menu-dish-desc">Frische Pasta · 3 Saucen nach Wahl · Parmesan</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Wok-Station <span style="font-weight:400;color:var(--text-faint)">(vegan möglich)</span></div><div class="menu-dish-desc">Gemüse · Tofu · Kokos-Curry · Basmati</div></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Klassiker vom Foodtruck</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Currywurst Berlin Style</div><div class="menu-dish-desc">Hausgemachte Currysauce · Pommes</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Gourmet-Burger</div><div class="menu-dish-desc">Dry-Aged-Patty · Brioche · Hausdressing</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Tacos &amp; Quesadillas</div><div class="menu-dish-desc">Barbacoa · Baja Fish · Veggie-Option</div></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Dessert-Station</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Crêpes à la minute</div><div class="menu-dish-desc">Zucker-Zimt · Nutella · Erdbeeren</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Churros</div><div class="menu-dish-desc">Heißer Schokoladendip · Zimtzucker</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Frozen Yoghurt Bar</div><div class="menu-dish-desc">5 Toppings nach Wahl</div></div>
+      </div>
+    </div>
+      <p class="menu-foot">Foodtruck-Einsatz auf Anfrage · Stromversorgung erforderlich.</p>
+    </div>
+  </section>
+
+  <!-- ===== 04 Desserts ===== -->
+  <section class="menu-section menu-section--left">
+    <div class="menu-photo" style="background-image:url('images/food-slider/cropped/food-slide-05.jpg')" role="img" aria-label="Desserts von B60 Catering"></div>
+    <div class="menu-section-inner">
+    <div class="menu-section-head">
+      <span class="menu-section-num">04</span>
+      <h2 class="menu-section-title"><small>Süßer Abschluss</small>Desserts &amp; Sweets</h2>
+    </div>
+    <div class="menu-cats">
+      <div class="menu-cat">
+        <h4>Dessert-Buffet</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Brownies &amp; Pastries</div><div class="menu-dish-desc">Täglich frisch gebacken</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Kaiserschmarrn</div><div class="menu-dish-desc">Apfelkompott · Puderzucker</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Apple Crumble</div><div class="menu-dish-desc">Vanillesauce · Karamell</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Mousse au Chocolat</div><div class="menu-dish-desc">Dunkle Schokolade · Himbeercoulis</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Petits Fours</div><div class="menu-dish-desc">Macarons · Trüffel · Mignardises</div></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Getränke-Service</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Kaffee &amp; Tee-Station</div><div class="menu-dish-desc">Espresso · Cappuccino · Auswahl Tees</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Erfrischungsgetränke</div><div class="menu-dish-desc">Wasser · Säfte · Softdrinks</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Bar-Catering auf Anfrage</div><div class="menu-dish-desc">Wein · Sekt · Cocktails · Mocktails</div></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Besondere Wünsche</h4>
+        <div class="menu-dish"><div class="menu-dish-name">Themen-Catering</div><div class="menu-dish-desc">Saisonal · Regional · International</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Trauer-Catering</div><div class="menu-dish-desc">Stimmungsvolles Buffet · diskrete Betreuung</div></div>
+        <div class="menu-dish"><div class="menu-dish-name">Baustellen-Catering</div><div class="menu-dish-desc">Praktisch · Sättigend · Pünktlich</div></div>
+      </div>
+    </div>
+      <p class="menu-foot">Alle Menüs nach euren Wünschen anpassbar – sprecht uns an!</p>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="menu-cta">
+    <img src="logo-b60-catering.png" alt="B60 Catering" style="mix-blend-mode: normal;">
+    <h2>Bereit für euer Event?</h2>
+    <p>Wir freuen uns auf eure Anfrage! Schreibt uns oder folgt uns auf Instagram – gemeinsam stellen wir euer perfektes Menü zusammen.</p>
+    <div class="menu-cta-actions">
+      <a class="btn btn--solid" href="index.html#kontakt">Angebot anfragen</a>
+      <a class="btn btn--ghost" href="https://instagram.com/b60_catering" target="_blank" rel="noopener">@b60_catering</a>
+    </div>
+    <div class="menu-photos">
+      <img src="images/food-slider/cropped/food-slide-03.jpg" alt="B60 Catering Häppchen" loading="lazy">
+      <img src="images/food-slider/cropped/food-slide-05.jpg" alt="B60 Catering Buffet" loading="lazy">
+      <img src="images/food-slider/cropped/food-slide-07.jpg" alt="B60 Catering Speisen" loading="lazy">
+    </div>
+    <a class="menu-back" href="impressum.html" style="margin-top:2.4rem;">Impressum</a>
+  </section>
+
+</body>
+</html>
