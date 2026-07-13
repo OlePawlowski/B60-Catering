@@ -766,13 +766,6 @@ a { color: inherit; }
   color: rgba(242, 232, 214, 0.55);
 }
 
-.contact-form input[type="date"],
-.contact-form input[type="time"] {
-  color-scheme: dark; /* Kalender-/Uhr-Icon hell darstellen */
-  -webkit-min-logical-width: 0px; /* iOS Safari ignoriert sonst width:100% bei nativen Date-/Time-Feldern */
-  min-width: 0;
-}
-
 .form-foot {
   display: flex;
   align-items: center;
