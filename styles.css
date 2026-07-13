@@ -136,7 +136,7 @@ a { color: inherit; }
 }
 
 .brand-logo {
-  width: clamp(120px, 13vw, 180px);
+  width: clamp(150px, 15vw, 250px);
   height: auto;
   display: block;
   mix-blend-mode: multiply;
