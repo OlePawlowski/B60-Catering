@@ -718,7 +718,7 @@ a { color: inherit; }
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1.1rem;
 }
 
@@ -769,6 +769,8 @@ a { color: inherit; }
 .contact-form input[type="date"],
 .contact-form input[type="time"] {
   color-scheme: dark; /* Kalender-/Uhr-Icon hell darstellen */
+  -webkit-min-logical-width: 0px; /* iOS Safari ignoriert sonst width:100% bei nativen Date-/Time-Feldern */
+  min-width: 0;
 }
 
 .form-foot {
@@ -983,7 +985,7 @@ a { color: inherit; }
 @media (max-width: 560px) {
   .event-grid { grid-template-columns: 1fr; }
   .client-wall { grid-template-columns: repeat(2, 1fr); }
-  .form-row { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: minmax(0, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; }
   .food-carousel-track img { flex: 0 0 100%; width: 100%; }
